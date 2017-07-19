@@ -9,42 +9,37 @@ import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 import com.gennlife.drgs.utils.ListAndStringUtils;
 
-public class DRGs_csv {
-	// 用来保存数据
-	private static List<String> csvList = new ArrayList<String>();
-
+/**
+ * @Description: 处理csv文件方法
+ * @author: wangmiao
+ * @Date: 2017年7月19日 下午2:13:03 
+ */
+public class CsvReadAndWrite {
+	
 	/** 
-	* @Title: readCsv 
-	* @Description: 读取csv文件
-	* @param: @param readFilePath
+	* @Title: readCsvOfLine 
+	* @Description: 读取csv文件，某一列
+	* @param: @param readFilePath:读入路径和文件名F:\\DRGs\\newadd\\990002_武汉市中心医院.csv
 	* @param: @return :
 	* @return: List<String>  返回list
 	* @throws 
 	*/
-	public static List<String> readCsv(String readFilePath) {
+	public static List<String> readCsvOfLine(String readFilePath) {
+		// 用来保存数据
+		List<String> csvList = new ArrayList<String>();
+
 		try {
 			// 创建CSV读对象
 			CsvReader csvReader = new CsvReader(readFilePath,',',Charset.forName("UTF-8"));
+			//CsvReader csvReader = new CsvReader(readFilePath,',',Charset.forName("GBK"));
 			// 读表头
 			csvReader.readHeaders();
-			String record = csvReader.getRawRecord();
-			csvList.add(record);
 			
 			// 逐行读入除表头的数据
 			while (csvReader.readRecord()) {
-				// 读一整行
-				String rawRecord = csvReader.getRawRecord();
-
-				// 将此行转为list，
-				List<String> stringToList = ListAndStringUtils.stringToList(rawRecord);
-				// 再23 24列加入引号后
-				stringToList.set(23, "'" + stringToList.get(23) + "'");
-				stringToList.set(24, "'" + stringToList.get(24) + "'");
-
-				// 再转为String
-				String listToString = ListAndStringUtils.listToString(stringToList);
-				// 添加到list中
-				csvList.add(listToString);
+				// 读这行的某一列s
+				String value = csvReader.get("src.jzlsh");
+				csvList.add(value);
 			}
 			// 关闭
 			csvReader.close();
@@ -55,18 +50,67 @@ public class DRGs_csv {
 
 		return csvList;
 	}
+	
+	
+	/** 
+	 * @Title: readCsv 
+	 * @Description: 读取csv文件并把23、24列加引号
+	 * @param: @param readFilePath:读入路径和文件名F:\\DRGs\\newadd\\990002_武汉市中心医院.csv
+	 * @param: @return :
+	 * @return: List<String>  返回list
+	 * @throws 
+	 */
+	public static List<String> readCsv(String readFilePath) {
+		// 用来保存数据
+		List<String> csvList = new ArrayList<String>();
+
+		try {
+			// 创建CSV读对象
+			CsvReader csvReader = new CsvReader(readFilePath,',',Charset.forName("UTF-8"));
+			//CsvReader csvReader = new CsvReader(readFilePath,',',Charset.forName("GBK"));
+			// 读表头
+			csvReader.readHeaders();
+			String record = csvReader.getRawRecord();
+			csvList.add(record);
+			
+			// 逐行读入除表头的数据
+			while (csvReader.readRecord()) {
+				// 读一整行
+				String rawRecord = csvReader.getRawRecord();
+				
+				// 将此行转为list，
+				List<String> stringToList = ListAndStringUtils.stringToList(rawRecord);
+				// 再23 24列加入引号后
+				stringToList.set(23, "'" + stringToList.get(23) + "'");
+				stringToList.set(24, "'" + stringToList.get(24) + "'");
+				
+				// 再转为String
+				String listToString = ListAndStringUtils.listToString(stringToList);
+				// 添加到list中
+				csvList.add(listToString);
+			}
+			// 关闭
+			csvReader.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return csvList;
+	}
 
 	
 	/** 
 	* @Title: writeCsv 
 	* @Description: 写入csv文件
-	* @param: @param writeFilePath
+	* @param: @param writeFilePath: 写入路径和文件名F:\\DRGs\\newadd\\1.csv
 	* @param: @param list :
 	* @return: void
 	* @throws 
 	*/
 	public static void writeCsv(String writeFilePath,List<String> list) {
 		try {
+			//CsvWriter csvWriter = new CsvWriter(writeFilePath,',',Charset.forName("GBK"));
 			CsvWriter csvWriter = new CsvWriter(writeFilePath,',',Charset.forName("UTF-8"));
 
 			for (int i = 0; i < list.size(); i++) {
@@ -83,7 +127,18 @@ public class DRGs_csv {
 	}
 
 	
+	/** 
+	* @Title: readAndWriteCsv 
+	* @Description: 读文件并写入
+	* @param: @param readFilePath
+	* @param: @param writeFilePath :
+	* @return: void
+	* @throws 
+	*/
 	public static void readAndWriteCsv(String readFilePath,String writeFilePath) {
+		// 用来保存数据(不用全局变量，否则调用循环时，数据累计增加)
+		List<String> csvList = new ArrayList<String>();
+
 		try {
 			// 创建CSV读对象
 			CsvReader csvReader = new CsvReader(readFilePath,',', Charset.forName("UTF-8"));
@@ -110,14 +165,6 @@ public class DRGs_csv {
 				String listToString = ListAndStringUtils.listToString(stringToList);
 				csvList.add(listToString);
 				
-				//再转为String[]
-				//String listToString = ListAndStringUtils.ListToString(stringToList);
-				//System.out.println(listToString);
-				//String[] content = ListAndStringUtils.ListToString2(stringToList);
-				//csvWriter.writeRecord(content);
-				
-				// 读这行的某一列s
-				//String value = csvReader.get("src.p13");
 			}
 			csvReader.close(); 
 			
@@ -127,14 +174,13 @@ public class DRGs_csv {
 				csvWriter.writeRecord(content);
 			}
 			csvWriter.close();  
-	        System.out.println("--------CSV文件已经写入--------");  
+			
+	        System.out.println(readFilePath+"--------CSV文件已经写入--------");  
 	        
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
 	
 	
 }

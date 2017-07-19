@@ -41,7 +41,7 @@ public class ListAndStringUtils {
 	public static String listToString(List<String> list) {
 		StringBuilder sb = new StringBuilder();
 		
-		for (int i = 1; i < list.size(); i++) {
+		for (int i = 0; i < list.size(); i++) {
 			String attribute = list.get(i);
 			sb.append(attribute+",");
 		}

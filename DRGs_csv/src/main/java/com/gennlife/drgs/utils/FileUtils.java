@@ -4,6 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Description: 文件工具类
+ * @author: wangmiao
+ * @Date: 2017年7月19日 下午2:14:15 
+ */
 public class FileUtils {
 	
 	/** 
@@ -37,14 +42,14 @@ public class FileUtils {
 	
 	
 	/** 
-	* @Title: ArrayFilesToListString 
+	* @Title: arrayFilesToListString 
 	* @Description: 将ArrayFiles中\变成\\后，存到数组中去
 	* @param: @param files
 	* @param: @return :
 	* @return: List<String> 返回String类型的list
 	* @throws 
 	*/
-	public static List<String> ArrayFilesToListString(ArrayList<File> files){
+	public static List<String> arrayFilesToListString(ArrayList<File> files){
 		// 用来保存数据
 		List<String> list = new ArrayList<String>();
 

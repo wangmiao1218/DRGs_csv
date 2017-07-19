@@ -1,4 +1,4 @@
-package com.gennlife.drgs.csv.test;
+package com.gennlife.drgs.utils.test;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class TestFileUtils {
     @Test  
     public  void testArrayFilesToListString(){  
         ArrayList<File> files=FileUtils.getListFiles(filePath);  
-        List<String> list = FileUtils.ArrayFilesToListString(files);
+        List<String> list = FileUtils.arrayFilesToListString(files);
         for (int i = 0; i < list.size(); i++) {
         	String string = list.get(i);
 			System.out.println(string);
