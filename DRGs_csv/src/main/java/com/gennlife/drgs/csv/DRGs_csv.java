@@ -11,7 +11,7 @@ import com.gennlife.drgs.utils.ListAndStringUtils;
 
 public class DRGs_csv {
 	// 用来保存数据
-	private static List<String> csvList = new ArrayList<>();
+	private static List<String> csvList = new ArrayList<String>();
 
 	/** 
 	* @Title: readCsv 

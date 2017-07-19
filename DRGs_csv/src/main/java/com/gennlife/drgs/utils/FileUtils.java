@@ -46,7 +46,7 @@ public class FileUtils {
 	*/
 	public static List<String> ArrayFilesToListString(ArrayList<File> files){
 		// 用来保存数据
-		List<String> list = new ArrayList<>();
+		List<String> list = new ArrayList<String>();
 
 		for (int i = 0; i < files.size(); i++) {
 	       String str= files.get(i).toString().replaceAll("\\\\","\\\\\\\\");

@@ -21,7 +21,7 @@ public class ListAndStringUtils {
 	public static List<String> stringToList(String value){
 		String[] strings = value.split(",");
 		
-		List<String> list=new ArrayList<>();
+		List<String> list=new ArrayList<String>();
 		for (int i = 0; i < strings.length; i++) {
 			list.add(strings[i]);
 		}
