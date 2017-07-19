@@ -29,6 +29,7 @@ public class DRGs {
 	    
 	    //循环遍历list，分别读入和写入
 	    for (int i = 0; i < list.size(); i++) {
+
         	String readFilePath = list.get(i);
 			
 			//处理路径变成文件名
