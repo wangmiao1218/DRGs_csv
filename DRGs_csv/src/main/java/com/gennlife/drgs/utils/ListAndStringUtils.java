@@ -62,5 +62,19 @@ public class ListAndStringUtils {
 	}
 	
 	
+	/** 
+	* @Title: StringToSubstring 
+	* @Description: 将路径中去掉最后一个\\之前，以及后缀名，只剩下文件名
+	* @param: @param value
+	* @return: String
+	* @throws 
+	*/
+	public static String stringToSubstring(String value) {
+		int i=value.lastIndexOf("\\");
+    	int j=value.lastIndexOf(".");
+    	String substring = value.substring(i+1, j);
+		return substring;  
+	}
+	
 	
 }

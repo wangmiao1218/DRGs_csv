@@ -7,10 +7,11 @@ import java.util.List;
 import org.junit.Test;
 
 import com.gennlife.drgs.utils.FileUtils;
+import com.gennlife.drgs.utils.ListAndStringUtils;
 
 public class TestFileUtils {
 	
-	private static String filePath = "F:\\newadd";
+	private static String filePath = "F:\\DRGs\\newadd";
 
     @Test  
     public  void testArrayFilesToListString(){  
@@ -26,16 +27,10 @@ public class TestFileUtils {
     
     @Test  
     public  void testStringToSubstring(){  
-    	String value="F:\\newadd\\990002_武汉市中心医院.csv";
-    	//String substring = ListAndStringUtils.StringToSubstring(string);
+    	String value="F:\\DRGs\\newadd\\990002_武汉市中心医院.csv";
+    	String substring = ListAndStringUtils.stringToSubstring(value);
     	
-    	int i=value.lastIndexOf(".");
-    	String substring = value.substring(0,i);
-    	
-    	int j=value.lastIndexOf("\\");
-    	String substring2 = substring.substring(j+1);
-    	
-    	System.out.println(substring2);
+    	System.out.println(substring);
     }  
 
     
