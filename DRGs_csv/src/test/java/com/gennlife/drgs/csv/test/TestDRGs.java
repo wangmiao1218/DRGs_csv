@@ -5,12 +5,14 @@ import com.gennlife.drgs.csv.DRGs;
 
 public class TestDRGs {
 
-	private static String filePath = "F:\\DRGs\\newadd";
+	private static String readFilePath = "F:\\DRGs\\newadd";
+	private static String writeFilePath = "F:\\DRGs\\test\\";
 
 	@Test
 	public void testDrgs() {
-		DRGs.drgs(filePath);
+		DRGs.drgs(readFilePath, writeFilePath);
 		System.out.println("OK");
 	}
 
+	
 }

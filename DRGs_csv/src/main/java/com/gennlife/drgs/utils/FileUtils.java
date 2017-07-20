@@ -14,7 +14,7 @@ public class FileUtils {
 	/** 
 	* @Title: getListFiles 
 	* @Description: 获取指定目录下的所有的文件（不包括文件夹），采用了递归
-	* @param: @param obj
+	* @param: @param obj  文件路径
 	* @param: @return :
 	* @return: ArrayList<File>
 	* @throws 

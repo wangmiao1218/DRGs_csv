@@ -70,11 +70,14 @@ public class ListAndStringUtils {
 	* @throws 
 	*/
 	public static String stringToSubstring(String value) {
-		int i=value.lastIndexOf("\\");
-    	int j=value.lastIndexOf(".");
-    	String substring = value.substring(i+1, j);
-		return substring;  
+		return value.substring(value.lastIndexOf("\\")+1, value.lastIndexOf("."));
 	}
+	
+	
+	
+	public static void compare2List(List<String> smallList, List<String> bigList){  
+       
+    }  
 	
 	
 }

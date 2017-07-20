@@ -8,18 +8,18 @@ import com.gennlife.drgs.csv.CsvReadAndWrite;
 
 public class TestCsvReadAndWrite {
 	
-	private static String readFilePath = "F:\\DRGs\\newadd\\990063_武汉市江岸区中西医结合医院.csv";
-	private static String writeFilePath="F:\\DRGs\\newadd\\1.csv";
+	private static String readFilePathAndFileName = "F:\\DRGs\\newadd\\990063_武汉市江岸区中西医结合医院.csv";
+	private static String writeFilePathAndFileName="F:\\DRGs\\newadd\\1.csv";
 
 	
 	@Test
 	public void readAndWriteCsv() {
-		CsvReadAndWrite.readAndWriteCsv(readFilePath, writeFilePath);
+		CsvReadAndWrite.readAndWriteCsv(readFilePathAndFileName, writeFilePathAndFileName);
 	}
 
 	@Test
 	public void readCsvOfLine() {
-		List<String> list =CsvReadAndWrite.readCsvOfLine(readFilePath);
+		List<String> list =CsvReadAndWrite.readCsvOfLine(readFilePathAndFileName);
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
@@ -27,7 +27,7 @@ public class TestCsvReadAndWrite {
 	
 	@Test
 	public void readCsv() {
-		List<String> list = CsvReadAndWrite.readCsv(readFilePath);
+		List<String> list = CsvReadAndWrite.readCsv(readFilePathAndFileName);
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}

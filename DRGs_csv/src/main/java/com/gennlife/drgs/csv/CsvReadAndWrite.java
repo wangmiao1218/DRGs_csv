@@ -19,18 +19,18 @@ public class CsvReadAndWrite {
 	/** 
 	* @Title: readCsvOfLine 
 	* @Description: 读取csv文件，某一列
-	* @param: @param readFilePath:读入路径和文件名F:\\DRGs\\newadd\\990002_武汉市中心医院.csv
+	* @param: @param readFilePathAndFileName:读入路径和文件名F:\\DRGs\\newadd\\990002_武汉市中心医院.csv
 	* @param: @return :
 	* @return: List<String>  返回list
 	* @throws 
 	*/
-	public static List<String> readCsvOfLine(String readFilePath) {
+	public static List<String> readCsvOfLine(String readFilePathAndFileName) {
 		// 用来保存数据
 		List<String> csvList = new ArrayList<String>();
 
 		try {
 			// 创建CSV读对象
-			CsvReader csvReader = new CsvReader(readFilePath,',',Charset.forName("UTF-8"));
+			CsvReader csvReader = new CsvReader(readFilePathAndFileName,',',Charset.forName("UTF-8"));
 			//CsvReader csvReader = new CsvReader(readFilePath,',',Charset.forName("GBK"));
 			// 读表头
 			csvReader.readHeaders();
@@ -55,18 +55,18 @@ public class CsvReadAndWrite {
 	/** 
 	 * @Title: readCsv 
 	 * @Description: 读取csv文件并把23、24列加引号
-	 * @param: @param readFilePath:读入路径和文件名F:\\DRGs\\newadd\\990002_武汉市中心医院.csv
+	 * @param: @param readFilePathAndFileName:读入路径和文件名F:\\DRGs\\newadd\\990002_武汉市中心医院.csv
 	 * @param: @return :
 	 * @return: List<String>  返回list
 	 * @throws 
 	 */
-	public static List<String> readCsv(String readFilePath) {
+	public static List<String> readCsv(String readFilePathAndFileName) {
 		// 用来保存数据
 		List<String> csvList = new ArrayList<String>();
 
 		try {
 			// 创建CSV读对象
-			CsvReader csvReader = new CsvReader(readFilePath,',',Charset.forName("UTF-8"));
+			CsvReader csvReader = new CsvReader(readFilePathAndFileName,',',Charset.forName("UTF-8"));
 			//CsvReader csvReader = new CsvReader(readFilePath,',',Charset.forName("GBK"));
 			// 读表头
 			csvReader.readHeaders();
@@ -103,15 +103,15 @@ public class CsvReadAndWrite {
 	/** 
 	* @Title: writeCsv 
 	* @Description: 写入csv文件
-	* @param: @param writeFilePath: 写入路径和文件名F:\\DRGs\\newadd\\1.csv
+	* @param: @param writeFilePathAndFileName: 写入路径和文件名F:\\DRGs\\newadd\\1.csv
 	* @param: @param list :
 	* @return: void
 	* @throws 
 	*/
-	public static void writeCsv(String writeFilePath,List<String> list) {
+	public static void writeCsv(String writeFilePathAndFileName,List<String> list) {
 		try {
 			//CsvWriter csvWriter = new CsvWriter(writeFilePath,',',Charset.forName("GBK"));
-			CsvWriter csvWriter = new CsvWriter(writeFilePath,',',Charset.forName("UTF-8"));
+			CsvWriter csvWriter = new CsvWriter(writeFilePathAndFileName,',',Charset.forName("UTF-8"));
 
 			for (int i = 0; i < list.size(); i++) {
 				String[] content = ListAndStringUtils.listToStringArray(ListAndStringUtils.stringToList(list.get(i)));
@@ -130,19 +130,19 @@ public class CsvReadAndWrite {
 	/** 
 	* @Title: readAndWriteCsv 
 	* @Description: 读文件并写入
-	* @param: @param readFilePath
-	* @param: @param writeFilePath :
+	* @param: @param readFilePathAndFileName:"F:\\DRGs\\newadd\\990063_武汉市江岸区中西医结合医院.csv";
+	* @param: @param writeFilePathAndFileName :"F:\\DRGs\\newadd\\1.csv";
 	* @return: void
 	* @throws 
 	*/
-	public static void readAndWriteCsv(String readFilePath,String writeFilePath) {
+	public static void readAndWriteCsv(String readFilePathAndFileName,String writeFilePathAndFileName) {
 		// 用来保存数据(不用全局变量，否则调用循环时，数据累计增加)
 		List<String> csvList = new ArrayList<String>();
 
 		try {
 			// 创建CSV读对象
-			CsvReader csvReader = new CsvReader(readFilePath,',', Charset.forName("UTF-8"));
-			CsvWriter csvWriter = new CsvWriter(writeFilePath,',', Charset.forName("UTF-8"));
+			CsvReader csvReader = new CsvReader(readFilePathAndFileName,',', Charset.forName("UTF-8"));
+			CsvWriter csvWriter = new CsvWriter(writeFilePathAndFileName,',', Charset.forName("UTF-8"));
 			
 			// 读表头
 			csvReader.readHeaders();
@@ -175,7 +175,7 @@ public class CsvReadAndWrite {
 			}
 			csvWriter.close();  
 			
-	        System.out.println(readFilePath+"--------CSV文件已经写入--------");  
+	        System.out.println(readFilePathAndFileName+"--------CSV文件已经写入--------");  
 	        
 		} catch (IOException e) {
 			e.printStackTrace();
