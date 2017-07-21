@@ -1,15 +1,9 @@
 package com.gennlife.file.test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-import com.gennlife.drgs.utils.FileUtils;
 import com.gennlife.file.FindAndCopyFile;
 
 public class TestFindAndCopyFile {
@@ -24,29 +18,14 @@ public class TestFindAndCopyFile {
 	
 
 	@Test
-	public void copyFile1() {	
-		List<String> oldFilePathList = FindAndCopyFile.findFileReturnFileNameList(oldFilePath);	
-		List<String> newFilePathList = FindAndCopyFile.findFileReturnFileNameList(newFilePath);
-
-		//判断bigList中是否有smallList
-		for (String str : newFilePathList) {
-			if(!oldFilePathList.contains(str)){  
-                System.out.println("newFilePathList里没有的是==>" + str+"==>不做处理");  
-            } 
-			
-			if(oldFilePathList.contains(str)){  
-                System.out.println("newFilePathList里有的是==>" + str+"==>拷贝到新路径");  
-                FindAndCopyFile.copyFile(oldFilePath+"\\"+str+".csv", copyFilePath+"\\"+str+".csv");
-            } 
-		}
-		
-		
-		
+	public void copyTheSameFilesByFilePath() {	
+		String str = FindAndCopyFile.copyTheSameFilesByFilePath(oldFilePath, newFilePath, copyFilePath);
+		System.out.println(str);
 	}
 	
 	@Test
 	public void copyFile() {
-		FindAndCopyFile.copyFile(oldFilePathAndFileName, newFilePathAndFileName);
+		FindAndCopyFile.copyOneFile(oldFilePathAndFileName, newFilePathAndFileName);
 		
 	}
 
