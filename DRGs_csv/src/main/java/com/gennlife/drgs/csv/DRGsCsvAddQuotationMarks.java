@@ -12,16 +12,16 @@ import com.gennlife.drgs.utils.ListAndStringUtils;
  * @author: wangmiao
  * @Date: 2017年7月19日 下午2:14:36
  */
-public class DRGs {
+public class DRGsCsvAddQuotationMarks {
 
 	/**
-	 * @Title: drgs
+	 * @Title: drgsCsvAddQuotationMarksByFilePath
 	 * @Description:传入路径，把路径下的所有csv文件中身份证加引号‘’
 	 * @param: @param filePath :文件路径：F:\\DRGs\\newadd
 	 * @return: void
 	 * @throws
 	 */
-	public static void drgs(String readFilePath,String writeFilePath) {
+	public static void drgsCsvAddQuotationMarksByFilePath(String readFilePath,String writeFilePath) {
 		// 获取目录下所有文件
 		ArrayList<File> files = FileUtils.getListFiles(readFilePath);
 		// 将其转成list

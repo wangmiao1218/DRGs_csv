@@ -97,7 +97,7 @@ public class FindAndCopyFile {
 			//拷贝
 			if(oldFilePathList.contains(str)){  
                 System.out.println("newFilePathList里有的是==>" + str+"==>拷贝到新路径");  
-                FindAndCopyFile.copyOneFile(oldFilePath+"\\"+str+".csv", copyFilePath+"\\"+str+".csv");
+                FindAndCopyFile.copyOneFile(newFilePath+"\\"+str+".csv", copyFilePath+"\\"+str+".csv");
             } 
 		}
 		//返回拷贝到的新路径中文件数量
