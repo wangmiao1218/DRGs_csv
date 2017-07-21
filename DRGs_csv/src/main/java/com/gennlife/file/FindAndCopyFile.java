@@ -105,4 +105,29 @@ public class FindAndCopyFile {
 	}
 
 	
+	/** 
+	 * @Title: copyTheDifferentFilesByFilePath 
+	 * @Description: 判断少的文件夹中，在全的文件夹中是否存在，不存在则拷贝文件到拷贝的路径
+	 * @param: @param oldFilePath:少的文件路径
+	 * @param: @param newFilePath:全的路径
+	 * @param: @param copyFilePath :拷贝到的路径
+	 * @return: String 返回拷贝到的新路径中文件数量
+	 * @throws 
+	 */
+	public static String copyTheDifferentFilesByFilePath(String oldFilePath, String newFilePath,String copyFilePath){
+		List<String> oldFilePathList = FindAndCopyFile.findFileReturnFileNameList(oldFilePath);	
+		List<String> newFilePathList = FindAndCopyFile.findFileReturnFileNameList(newFilePath);
+		//判断bigList中是否有smallList
+		for (String str : newFilePathList) {
+			//没有，则拷贝
+			if(!oldFilePathList.contains(str)){  
+				System.out.println("newFilePathList里没有的是==>" + str+"==>拷贝到新路径");  
+				FindAndCopyFile.copyOneFile(newFilePath+"\\"+str+".csv", copyFilePath+"\\"+str+".csv");
+			} 
+		}
+		//返回拷贝到的新路径中文件数量
+		return "成功拷贝："+FindAndCopyFile.findFileReturnFileNameList(copyFilePath).size() +" 个文件。";
+	}
+	
+	
 }
