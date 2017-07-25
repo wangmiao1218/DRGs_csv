@@ -19,10 +19,10 @@ public class TestFindAndCopyFile {
 
 	@Test
 	public void copyTheDifferentFilesByFilePath() {
-		String oldFilePath = "E:\\武汉DRGS\\数据\\DRGsData_0721_test";
-		String newFilePath = "E:\\武汉DRGS\\数据\\DRGsData_0721";
+		String oldFilePath = "E:\\武汉DRGS\\数据\\新建文件夹";
+		String newFilePath = "E:\\武汉DRGS\\数据\\DRGsData_0722";
 		
-		String copyFilePath = "E:\\武汉DRGS\\数据\\DRGsData_0721_w";
+		String copyFilePath = "E:\\武汉DRGS\\数据\\DRGsData_0722_w";
 		
 		String str = FindAndCopyFile.copyTheDifferentFilesByFilePath(oldFilePath, newFilePath, copyFilePath);
 		System.out.println(str);
@@ -31,9 +31,9 @@ public class TestFindAndCopyFile {
 	@Test
 	public void copyTheSameFilesByFilePath() {
 		String oldFilePath = "E:\\武汉DRGS\\测试\\4_7.10\\new_7.10";
-		String newFilePath = "E:\\武汉DRGS\\数据\\DRGsData_0721";
+		String newFilePath = "E:\\武汉DRGS\\数据\\DRGsData_0722";
 		
-		String copyFilePath = "E:\\武汉DRGS\\测试\\5_7.21\\7.21";
+		String copyFilePath = "E:\\武汉DRGS\\测试\\6_7.22\\7.22";
 		
 		String str = FindAndCopyFile.copyTheSameFilesByFilePath(oldFilePath, newFilePath, copyFilePath);
 		System.out.println(str);
