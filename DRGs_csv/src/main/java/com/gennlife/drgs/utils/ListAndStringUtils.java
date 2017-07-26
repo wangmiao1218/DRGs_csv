@@ -74,10 +74,4 @@ public class ListAndStringUtils {
 	}
 	
 	
-	
-	public static void compare2List(List<String> smallList, List<String> bigList){  
-       
-    }  
-	
-	
 }
