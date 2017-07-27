@@ -56,15 +56,15 @@ public class FindAndCopyFile {
 			int byteread = 0;
 			File oldfile = new File(oldFilePathAndFileName);
 			if (oldfile.exists()) { // 文件存在时
-				InputStream inStream = new FileInputStream(oldFilePathAndFileName); // 读入原文件
+				InputStream is = new FileInputStream(oldFilePathAndFileName); // 读入原文件
 				FileOutputStream fs = new FileOutputStream(newFilePathAndFileName);
 				byte[] buffer = new byte[1444];
 				int length;
-				while ((byteread = inStream.read(buffer)) != -1) {
+				while ((byteread = is.read(buffer)) != -1) {
 					bytesum += byteread; // 字节数 文件大小
 					fs.write(buffer, 0, byteread);
 				}
-				inStream.close();
+				is.close();
 			}
 		} catch (Exception e) {
 			System.out.println("复制单个文件操作出错");
@@ -76,7 +76,7 @@ public class FindAndCopyFile {
 	
 	/** 
 	* @Title: copyTheSameFilesByFilePath 
-	* @Description: 判断少的文件夹中，在全的文件夹中是否存在，存在则拷贝相同的文件到拷贝的路径
+	* @Description: 判断少的文件夹中，在全的文件夹中是否存在，存在则拷贝全的文件夹中相同的文件到拷贝的路径
 	* @param: @param oldFilePath:少的文件路径
 	* @param: @param newFilePath:全的路径
 	* @param: @param copyFilePath :拷贝到的路径
@@ -88,12 +88,6 @@ public class FindAndCopyFile {
 		List<String> newFilePathList = FindAndCopyFile.findFileReturnFileNameList(newFilePath);
 		//判断bigList中是否有smallList
 		for (String str : newFilePathList) {
-			/*
-			//没有，不做处理
-			if(!oldFilePathList.contains(str)){  
-                System.out.println("newFilePathList里没有的是==>" + str+"==>不做处理");  
-            } 
-			*/
 			//拷贝
 			if(oldFilePathList.contains(str)){  
                 System.out.println("newFilePathList里有的是==>" + str+"==>拷贝到新路径");  
