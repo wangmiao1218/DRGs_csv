@@ -8,8 +8,8 @@ public class TestDRGsCsvAddQuotationMarks {
 	//private static String readFilePath = "F:\\DRGs\\newadd";
 	//private static String writeFilePath = "F:\\DRGs\\test\\";
 	
-	private static String readFilePath = "E:\\武汉DRGS\\测试\\7_7.27\\7.27";
-	private static String writeFilePath = "E:\\武汉DRGS\\测试\\7_7.27\\7.27_add\\";
+	private static String readFilePath = "E:\\安贞\\！安贞数据导出\\1";
+	private static String writeFilePath = "E:\\安贞\\！安贞数据导出\\1\\";
 
 	@Test
 	public void drgsCsvAddQuotationMarksByFilePath() {
